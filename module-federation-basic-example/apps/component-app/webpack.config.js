@@ -50,8 +50,10 @@ module.exports = (_, argv) => ({
       shared: {
         ...deps,
         react: {
-          singleton: true,
           requiredVersion: deps.react,
+          singleton: true, // 하나만쓴다
+          // strictVersion: true, // 엄격하게 버전을 관리한다.
+          // shareScope: "community" // 범위설정이 가능 default가 기본값
         },
         "react-dom": {
           singleton: true,

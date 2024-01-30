@@ -1,3 +1,4 @@
+import { join, map } from "lodash";
 import React from "react";
 import ReactDOM from "react-dom";
 
@@ -10,6 +11,7 @@ const App = () => (
     <div>Framework: react</div>
     <div>Language: JavaScript</div>
     <div>CSS: Empty CSS</div>
+    <div>{join(map(["1", "2"]), "-")}</div>
     <Button
       onClick={() => {
         console.log("Clicked!!");

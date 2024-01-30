@@ -1,5 +1,4 @@
-// module-federation-basic-example/apps/component-app/src/components/Button.jsx
-
+import { join, map } from "lodash";
 import React from "react";
 
 const styleMapping = {
@@ -35,6 +34,7 @@ const Button = ({ type, children, onClick }) => {
   return (
     <button style={styleMapping[buttonType]} onClick={onClick}>
       {children}
+      {join(map(["1", "2"]), "-")}
     </button>
   );
 };
