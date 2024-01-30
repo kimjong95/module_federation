@@ -57,6 +57,9 @@ module.exports = (_, argv) => ({
           singleton: true,
           requiredVersion: deps["react-dom"],
         },
+        "shared-library": {
+          singleton: true,
+        },
       },
     }),
     new HtmlWebPackPlugin({
