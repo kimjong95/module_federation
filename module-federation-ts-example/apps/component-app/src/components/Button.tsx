@@ -1,6 +1,4 @@
-import { join, map } from "lodash";
-import React, { useContext } from "react";
-import { NameContext } from "shared-library";
+import React, { PropsWithChildren } from "react";
 
 const styleMapping = {
   primary: {
@@ -29,14 +27,16 @@ const styleMapping = {
   },
 };
 
-const Button = ({ type, children, onClick }) => {
-  const name = useContext(NameContext);
-  const buttonType = type === "warning" ? "warning" : "primary";
+export type ButtonProps = PropsWithChildren<{
+  type?: "primary" | "warning";
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+}>;
 
+const Button: React.FC<ButtonProps> = ({ type, children, onClick }) => {
+  const buttonType = type === "warning" ? "warning" : "primary";
   return (
     <button style={styleMapping[buttonType]} onClick={onClick}>
       {children}
-      {join(map(["1", "2"]), "-")} {name}
     </button>
   );
 };
