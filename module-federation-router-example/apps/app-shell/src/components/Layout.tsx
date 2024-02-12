@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
-import { appJobsPrefix, appNetworkPrefix } from "./constants/prefix";
+import { appJobsPrefix, appNetworkPrefix } from "../constants/prefix";
 
 const Layout = () => (
   <div>
