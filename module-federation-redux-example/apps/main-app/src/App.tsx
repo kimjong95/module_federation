@@ -1,10 +1,12 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { Provider, useDispatch, useSelector } from "react-redux";
+import createStore from "./redux/store";
 
 import "./index.css";
 import { decrement, increment } from "./redux/modules/counter";
-import createStore from "./redux/store";
+
+const RemoteApp = React.lazy(() => import("remote_app/RemoteApp"));
 
 const { store, injectReducer } = createStore();
 
@@ -25,14 +27,14 @@ const App = () => {
         <button onClick={() => dispatch(increment())}>+</button>
         <button onClick={() => dispatch(decrement())}>-</button>
       </div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <RemoteApp store={store} injectReducer={injectReducer} />
+      </Suspense>
     </div>
   );
 };
 
-const rootElement = document.getElementById("app");
-if (!rootElement) throw new Error("Failed to find the root element");
-
-ReactDOM.createRoot(rootElement as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById("app")!).render(
   <Provider store={store}>
     <App />
   </Provider>

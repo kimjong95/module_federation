@@ -2,7 +2,7 @@ import { Reducer, combineReducers, configureStore } from "@reduxjs/toolkit";
 import counter from "./modules/counter";
 
 const createStore = () => {
-  const staticReduces = {
+  const staticReducers = {
     counter,
   };
 
@@ -10,7 +10,7 @@ const createStore = () => {
 
   const store = configureStore({
     reducer: {
-      ...staticReduces,
+      ...staticReducers,
     },
   });
 
@@ -18,8 +18,8 @@ const createStore = () => {
     asyncReducers[key] = asyncReducer;
     store.replaceReducer(
       combineReducers({
-        ...staticReduces,
-        ...asyncReducer,
+        ...staticReducers,
+        ...asyncReducers,
       })
     );
   }
